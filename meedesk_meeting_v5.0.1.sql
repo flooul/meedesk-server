@@ -14,6 +14,13 @@
  Date: 28/05/2020 15:46:24
 */
 
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'Pts123456.';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'Pts123456.' WITH GRANT OPTION;
+show variables like '%max_allowed_packet%';  
+set global max_allowed_packet = 2*1024*1024*10; 
+use meedesk_meeting;
+
+CREATE DATABASE meedesk_meeting DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
