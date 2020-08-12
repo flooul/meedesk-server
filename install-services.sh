@@ -26,7 +26,10 @@ echo "创建并启动nginx-rtmp服务"
 docker run --name nginx-rtmp -p 1935:1935 -p 8899:80 --restart=always -d -it 18820909494/yiwen:nginx-rtmp
 echo "创建并启动onlyoffice文件服务"
 docker run --name=onlyoffice -i -t -d -p 8083:80 --restart=always 18820909494/yiwen:onlyoffice
-
+echo "创建并启动kurento-server服务"
+docker run --name kms -d -p 8888:8888 --restart=always 18820909494/yiwen:kurento-server
+echo "创建并启动coturn服务"
+docker run --name=coturn -d -i --restart=always -p 3478:3478 -p 3478:3478/udp 18820909494/yiwen:coturn
 
 #echo "创建并启动meeting-server无纸化会议系统服务"
 #docker run --name meedesk-server -d -p 8088:8088 -p 15741:15741 --restart=always -v /tmp/:/tmp/  -v /opt/meedesk-server/ftp/:/opt/meedesk-server/ftp/ -v /opt/meedesk-server/config/:/config/ -t 18820909494/yiwen:meeting-server
