@@ -31,7 +31,8 @@ docker run --name kms -d -p 8888:8888 --restart=always 18820909494/yiwen:kurento
 echo "创建并启动coturn服务"
 docker run --name=coturn -d -i --restart=always -p 3478:3478 -p 3478:3478/udp 18820909494/yiwen:coturn
 
-#echo "创建并启动meeting-server无纸化会议系统服务"
+echo "创建并启动meeting-server无纸化会议系统服务"
+docker run --name meedesk-server -d -p 8088:8088 -p 15741:15741 --restart=always -v /tmp/:/tmp/  -v /opt/meeting-server/ftp/:/opt/meedesk-server/ftp/ -t 18820909494/yiwen:meedesk-server
 #docker run --name meedesk-server -d -p 8088:8088 -p 15741:15741 --restart=always -v /tmp/:/tmp/  -v /opt/meedesk-server/ftp/:/opt/meedesk-server/ftp/ -v /opt/meedesk-server/config/:/config/ -t 18820909494/yiwen:meeting-server
-
+#docker run --name meedesk-server -d -p 8088:8088 -p 15741:15741 --restart=always -v /tmp/:/tmp/  -v /opt/meedesk-server/ftp/:/opt/meedesk-server/ftp/ -v /opt/meedesk-server/config/:/config/ -t 18820909494/yiwen:meeting-server
 #docker run --name meedesk-server -p 8088:8088 -p 15741:15741 -v /tmp/:/tmp/ -v /Users/yiwen/ftp/:/Users/yiwen/ftp/ -v ~/project/meedesk-server/config/:/config/ -t 18820909494/yiwen:meeting-server
